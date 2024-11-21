@@ -71,8 +71,12 @@
         </nav>
 
         <!-- Header Section -->
-        <header class="text-white text-center py-5">
-            <div class="container">
+        <header class="text-white text-center py-5 position-relative">
+            <div class="container position-relative">
+                <!-- Logo Image -->
+                <img src="media/images/rage_logo.png" alt="Out Of Office Logo" 
+                    class="position-absolute top-0 start-0" style="height: 10em">
+                <!-- Band Name -->
                 <h1 class="display-3">Out Of Office</h1>
                 <p class="lead">Good music. Better gear.</p>
             </div>
@@ -88,7 +92,13 @@
                         <h2 class="section-title">About Us</h2>
                         <p>Covering the best 80's, 90's, and 00's rock with energy, fun, and excitement.</p>
                         <p>Bring your flannel and your angst, and jam out with the crew!</p>
-                        <img src="media/images/rage_logo.png" class="img-fluid rounded" alt="Out Of Office Band">
+                        <!-- <img src="media/images/rage_logo.png" class="img-fluid rounded" alt="Out Of Office Band"> -->
+                        <div id="random-video-container" class="mt-4">
+                            <video id="random-video" controls width="100%">
+                                Your browser does not support the video element.
+                            </video>
+                        </div>
+                        <button id="load-new-video" class="btn btn-primary mt-3">See Another Video</button>
                     </section>
 
                     <!-- Booking Agents Section -->
@@ -159,13 +169,6 @@
                             <source src="media/audio/90_second_sizzle.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <p>Watch us in action!</p>
-                        <div id="random-video-container" class="mt-4">
-                            <video id="random-video" controls width="100%">
-                                Your browser does not support the video element.
-                            </video>
-                        </div>
-                        <button id="load-new-video" class="btn btn-primary mt-3">See Another Video</button>
                     </section>
                 </div>
             </div>
