@@ -159,12 +159,13 @@
                             <source src="media/audio/90_second_sizzle.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <p>Watch us in action! (reload the page for different videos): </p>
+                        <p>Watch us in action!</p>
                         <div id="random-video-container" class="mt-4">
                             <video id="random-video" controls width="100%">
                                 Your browser does not support the video element.
                             </video>
                         </div>
+                        <button id="load-new-video" class="btn btn-primary mt-3">Load a Different Video</button>
                     </section>
                 </div>
             </div>
@@ -182,16 +183,23 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
         <script>
-    // Array of video filenames
-    const videoFiles = 28
+            // Count of video filenames
+            const videoFiles = 28
 
-    // Randomly select a video
-    const randomIndex = Math.floor(Math.random() * videoFiles);
-    const selectedVideo = `media/videos/video${randomIndex}.mp4`;
+            // Function to load a random video
+            function loadRandomVideo() {
+                const randomIndex = Math.floor(Math.random() * videoFiles);
+                const selectedVideo = `media/videos/video${randomIndex}.mp4`;
+                const videoElement = document.getElementById("random-video");
+                videoElement.src = selectedVideo;
+                videoElement.load(); // Ensures the video is loaded and ready to play
+            }
 
-    // Set the video source
-    const videoElement = document.getElementById("random-video");
-    videoElement.src = selectedVideo;
-</script>
+            // Load an initial random video when the page loads
+            loadRandomVideo();
+
+            // Add event listener to the button
+            document.getElementById("load-new-video").addEventListener("click", loadRandomVideo);
+        </script>
     </body>
 </html>
