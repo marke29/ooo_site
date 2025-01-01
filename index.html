@@ -187,11 +187,11 @@
 
         <script>
             // Count of video filenames
-            const videoFiles = 36
+            const videoFiles = 39
 
             // Function to load a random video
             function loadRandomVideo() {
-                const randomIndex = Math.floor(Math.random() * videoFiles);
+                const randomIndex = Math.floor((Math.random() * videoFiles) + 1);
                 const selectedVideo = `media/videos/video${randomIndex}.mp4`;
                 const videoElement = document.getElementById("random-video");
                 videoElement.src = selectedVideo;
