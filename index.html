@@ -191,8 +191,8 @@
 
             // Function to load a random video
             function loadRandomVideo() {
-                const randomIndex = Math.floor((Math.random() * videoFiles) + 1);
-                const selectedVideo = `media/videos/video${randomIndex}.mp4`;
+                const randomIndex = Math.floor(Math.random() * videoFiles);
+                const selectedVideo = `media/videos/video${randomIndex +1}.mp4`;
                 const videoElement = document.getElementById("random-video");
                 videoElement.src = selectedVideo;
                 videoElement.load(); // Ensures the video is loaded and ready to play
