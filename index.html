@@ -8,7 +8,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         
         <!-- CSS -->
-        <style>
+        <link rel="stylesheet" href="styles.css">
+        <!-- <style>
             body {
                 background-color: #121212;
                 color: #f8f9fa;
@@ -51,7 +52,6 @@
                 padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
                 height: 0;
             }
-
             .video-wrapper iframe {
                 position: absolute;
                 top: 0;
@@ -59,7 +59,42 @@
                 width: 100%;
                 height: 100%;
             }
-        </style>
+            .band-member-photo {
+                width: 150px; /* Keep it square */
+                height: 150px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 3px solid #f39c12;
+                display: block;
+                margin: 0 auto; /* Center in column */
+            }
+            #band-bios .row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px; /* Keeps spacing between members */
+            }
+
+            /* Ensure Four Evenly-Spaced Columns */
+            .band-bio {
+                flex: 1 1 22%; /* Ensures four per row */
+                text-align: center;
+            }
+
+            /* Adjust for Tablets (2x2 Layout) */
+            @media (max-width: 992px) {
+                .band-bio {
+                    flex: 1 1 45%; /* Two per row */
+                }
+            }
+
+            /* Adjust for Small Screens (Stacked) */
+            @media (max-width: 768px) {
+                .band-bio {
+                    flex: 1 1 100%; /* One per row */
+                }
+            }
+        </style> -->
     </head>
     <body>
         <!-- Navigation Menu -->
@@ -79,6 +114,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Booking Agents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#band-bios">Meet the Band</a>
                         </li>
                     </ul>
                     <!-- <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary ms-auto me-3" target="_blank">Find Us On Instagram</a> -->
@@ -135,7 +173,7 @@
                         </div>
                         <div class="mt-4">
                             <p>We are a high-energy band that taps into the nostalgia of the 90s and beyond; those songs you haven’t heard in years but loved during a different time in your life.</p>
-                            <p>A fully-mixed band that can scale from intimate venue to larger PA-supported stages, we are professionals who apply our corporate tenacity to the fun of making music.</p>
+                            <p>A fully-mixed band that can scale from intimate venues to larger PA-supported stages, we are professionals who apply our corporate tenacity to the fun of making music.</p>
                         </div>
                         <div>
                             <h3 class="section-title">Professional Gear</h3>
@@ -158,13 +196,13 @@
                         <img src="media/images/band_logo_bw.png" class="img-fluid rounded mb-4" alt="Upcoming Gigs">
                         <ul class="list-group">
                             <li class="list-group-item bg-dark text-white">
-                                <strong>March 28, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA
+                                <strong>March 28, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA (9pm)
                             </li>
                             <li class="list-group-item bg-dark text-white">
-                                <strong>May 21, 2025: </strong><a href="https://sanpedrosquaremarket.com/calendar">San Pedro Square</a>, San Jose, CA
+                                <strong>May 21, 2025: </strong><a href="https://sanpedrosquaremarket.com/calendar">San Pedro Square</a>, San Jose, CA (6pm)
                             </li>
                             <li class="list-group-item bg-dark text-white">
-                                <strong>May 23, 2025: </strong><a href="https://britanniaarms.com/weekly-events">Britannia Arms (Almaden)</a>, San Jose, CA
+                                <strong>May 23, 2025: </strong><a href="https://britanniaarms.com/weekly-events">Britannia Arms (Almaden)</a>, San Jose, CA (9pm)
                             </li>
                         </ul>
                         </section>
@@ -204,12 +242,50 @@
                     </section> -->
                 </div>
             </div>
+            <div class="row">
+                <!-- Band Member Bios Section -->
+                    <section id="band-bios" class="py-5 bg-dark text-white">
+                        <div class="container">
+                            <h2 class="section-title text-center mb-4">Meet The Band</h2>
+                            <div class="row justify-content-center">
+                                <!-- Band Member - Mark -->
+                                <div class="band-bio">
+                                    <img src="media/images/mark.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Mark E</h4>
+                                    <p>Vocals, Acoustic, Keys</p>
+                                    <p>Legend has it, Mark once hit a high note so pure that a stray cat wandered in and harmonized. The cat became a local legend, while Mark’s only claim to fame is a voicemail from the cat’s agent.</p>
+                                </div>
+                                <!-- Band Member - Jeff -->
+                                <div class="band-bio">
+                                    <img src="media/images/jeff.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Jeff R</h4>
+                                    <p>Bass</p>
+                                    <p>Jeff once locked in with the drummer so perfectly that time itself slowed down. Turns out, it was just the effects of mild dehydration. As he's almost a doctor, he diagnosed himself immediately.</p>
+                                </div>
+                                <!-- Band Member - Shane -->
+                                <div class="band-bio">
+                                    <img src="media/images/shane.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Shane B</h4>
+                                    <p>Guitar</p>
+                                    <p>Shane once got kicked out of a Toronto club for playing a solo so long that the bartender unplugged his amp. Rumor has it he sold his soul for the perfect distortion pedal, but the only thing he got in return was tinnitus</p>
+                                </div>
+                                <!-- Band Member - Mike -->
+                                <div class="band-bio">
+                                    <img src="media/images/mike.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Mike A</h4>
+                                    <p>Drums, Vocals</p>
+                                    <p>Mike allegedly played a drum solo so intense that Dave Grohl himself nodded in approval… from a completely unrelated interview on TV. Mike insists the timing was not a coincidence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+            </div>
         </div>
 
         <!-- Footer -->
         <footer class="footer py-3">
             <div class="container text-center">
-                <span>&copy; 2024 Out Of Office. All Rights Reserved.</span>
+                <span>&copy; 2025 Out Of Office. All Rights Reserved.</span>
             </div>
         </footer>
 
@@ -246,6 +322,5 @@
                 document.getElementById("load-new-video").addEventListener("click", loadRandomVideo);
             });
         </script>
-
     </body>
 </html>
