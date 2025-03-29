@@ -189,15 +189,13 @@
 
                 <!-- Sidebar Section -->
                 <div class="col-lg-6">
+
                     <!-- Upcoming Gigs -->
                     <section id="gigs" class="py-5">
                         <h2 class="section-title">Upcoming Gigs</h2>
                         <p>For the Millenials, the Xers, and the Z-curious</p>
                         <img src="media/images/band_logo_bw.png" class="img-fluid rounded mb-4" alt="Upcoming Gigs">
                         <ul class="list-group">
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>March 28, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA (9pm)
-                            </li>
                             <li class="list-group-item bg-dark text-white">
                                 <strong>May 21, 2025: </strong><a href="https://sanpedrosquaremarket.com/calendar">San Pedro Square</a>, San Jose, CA (6pm)
                             </li>
@@ -206,10 +204,14 @@
                             </li>
                         </ul>
                         </section>
+                    
                     <!-- Past Gigs -->
                     <section id="past-gigs" class="py-5">
                         <h2 class="section-title">Recent Gigs</h2>
                         <ul class="list-group">
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>March 28, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA
+                            </li>
                             <li class="list-group-item bg-dark text-white">
                                 <strong>February 1, 2025: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA
                             </li>
@@ -242,12 +244,14 @@
                     </section> -->
                 </div>
             </div>
+            
             <div class="row">
                 <!-- Band Member Bios Section -->
                     <section id="band-bios" class="py-5 bg-dark text-white">
                         <div class="container">
                             <h2 class="section-title text-center mb-4">Meet The Band</h2>
                             <div class="row justify-content-center">
+                                
                                 <!-- Band Member - Mark -->
                                 <div class="band-bio">
                                     <img src="media/images/mark.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
@@ -255,6 +259,7 @@
                                     <p>Vocals, Acoustic, Keys</p>
                                     <p>Legend has it, Mark once hit a high note so pure that a stray cat wandered in and harmonized. The cat became a local legend, while Mark’s only claim to fame is a voicemail from the cat’s agent.</p>
                                 </div>
+                                
                                 <!-- Band Member - Jeff -->
                                 <div class="band-bio">
                                     <img src="media/images/jeff.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
@@ -262,6 +267,7 @@
                                     <p>Bass</p>
                                     <p>Jeff once locked in with the drummer so perfectly that time itself slowed down. Turns out, it was just the effects of mild dehydration. As he's almost a doctor, he diagnosed himself immediately.</p>
                                 </div>
+                                
                                 <!-- Band Member - Shane -->
                                 <div class="band-bio">
                                     <img src="media/images/shane.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
@@ -269,6 +275,7 @@
                                     <p>Guitar</p>
                                     <p>Shane once got kicked out of a Toronto club for playing a solo so long that the bartender unplugged his amp. Rumor has it he sold his soul for the perfect distortion pedal, but the only thing he got in return was tinnitus.</p>
                                 </div>
+                                
                                 <!-- Band Member - Mike -->
                                 <div class="band-bio">
                                     <img src="media/images/mike.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
@@ -298,28 +305,50 @@
             // Load a random video
             document.addEventListener("DOMContentLoaded", function () {
                 let videoList = [];
+                let currentIndex = 0;
 
-                function loadRandomVideo() {
-                    if (videoList.length === 0) return;
+                // Function to shuffle an array (Fisher-Yates algorithm)
+                function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                    }
+                }
 
-                    // Pick a random video
-                    const randomVideo = videoList[Math.floor(Math.random() * videoList.length)];
+                // Function to update video player
+                function updateVideo() {
+                    if (videoList.length === 0) { // Prevent errors if no videos are available
+                        console.warn("No videos available! Check json or links");
+                        const videoFrame = document.getElementById("video-player");
+                        videoFrame.src = ""; // Clear the iframe
+                        return;
+                    }
 
-                    // Update the iframe source
-                    document.getElementById("video-player").src = `https://www.youtube.com/embed/${randomVideo.id}`;
+                    const videoFrame = document.getElementById("video-player");
+                    videoFrame.src = `https://www.youtube.com/embed/${videoList[currentIndex].id}`;
+
+                    // Move to the next video
+                    currentIndex++;
+
+                    // If we've gone through all videos, reshuffle and restart
+                    if (currentIndex >= videoList.length) {
+                        shuffleArray(videoList);
+                        currentIndex = 0;
+                    }
                 }
 
                 // Fetch video list from JSON
                 fetch('videos.json')
                     .then(response => response.json())
                     .then(data => {
-                        videoList = data.videos;
-                        loadRandomVideo(); // Load the first random video
+                        videoList = data.videos.filter(video => video.enabled); // Only use enabled videos
+                        shuffleArray(videoList); // Shuffle initially
+                        updateVideo(); // Load the first random video
                     })
                     .catch(error => console.error("Error loading video list:", error));
 
                 // Add event listener to button
-                document.getElementById("load-new-video").addEventListener("click", loadRandomVideo);
+                document.getElementById("load-new-video").addEventListener("click", updateVideo);
             });
         </script>
     </body>

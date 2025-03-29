@@ -2,27 +2,33 @@
   "videos": [
     {
     "id": "hGv8K5LBaeE", 
-    "title": "Are You Gonna Go My Way"
+    "title": "Are You Gonna Go My Way",
+    "enabled": true
     }, 
     {
     "id": "ULnr9fVfaAw", 
-    "title": "Buddy Holly"
+    "title": "Buddy Holly",
+    "enabled": true
     },
     {
     "id": "vgHCgdIgVwM", 
-    "title": "Running Down A Dream"
+    "title": "Running Down A Dream",
+    "enabled": true
     }, 
     {
     "id": "y2g0stFdSKI", 
-    "title": "Zero"
+    "title": "Zero",
+    "enabled": true
     },
     {
     "id": "Kd5v7zZLSO0", 
-    "title": "Tush"
+    "title": "Tush",
+    "enabled": false
     }, 
     {
     "id": "IQOCE-8bbbk", 
-    "title": "Psycho Killer"
+    "title": "Psycho Killer",
+    "enabled": true
     }
   ]
 }
