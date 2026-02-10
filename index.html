@@ -1,307 +1,669 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Out Of Office</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Out of Office — Band</title>
+  <meta name="description" content="Out of Office — 80s/90s/00s rock cover band. Corporate by day. Chaos by night. Book us for your next event.">
+  <style>
+    :root{ --white:#FFFFFF; --blue:#7B68EE; --black:#000000; --btn:#7B68EE; --btn-text:#FFFFFF; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--black);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--blue);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    header.site-nav{position:absolute;top:0;left:0;right:0;z-index:20;background:transparent}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img.logo{width:55px;height:auto;border-radius:8px;border:none;box-shadow:none;background:transparent;display:block}
+    nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--white);opacity:1;font-weight:800}
+    .socials{display:flex;gap:12px;align-items:center}
+    .socials img{width:22px;height:22px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+    section#hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden}
+    #hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) brightness(.8)}
+    .vignette::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1200px 600px at 50% 30%, rgba(0,0,0,0) 40%, rgba(0,0,0,.45) 100%)}
+    .hero-content{position:relative;z-index:1;text-align:center;padding:20px}
+    .btn{display:inline-block;background:var(--btn);color:var(--white);padding:14px 22px;border-radius:999px;font-weight:700;letter-spacing:.5px;border:2px solid rgba(255,255,255,.06);box-shadow:0 8px 30px rgba(123,104,238,.3);transition:transform .2s ease, box-shadow .2s ease, opacity .5s ease}
+    #hero .hero-content .btn { margin-top: 210px; opacity: 0; }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(123,104,238,.45)}
+    section{padding:80px 0;border-top:1px solid rgba(255,255,255,.06)}
+    section h2{font-size:clamp(28px,4vw,40px);margin:0 0 20px}
+    .muted{color:var(--white);opacity:.7}
+    #events .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+    @media (max-width:900px){#events .grid{grid-template-columns:1fr}}
+    .events-list{background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.18);border-radius:18px;padding:16px;display:flex;flex-direction:column;overflow:auto;min-height:0;scroll-behavior:smooth}
+    .events-scroll{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+    .events-heading{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);margin-bottom:10px}
+    .chip{font-size:12px;padding:6px 10px;background:rgba(123,104,238,.12);border:1px solid rgba(123,104,238,.35);border-radius:999px;color:var(--white)}
+    .event-card{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px}
+    @media (max-width:640px){.event-card{grid-template-columns:1fr}}
+    .event-date{font-weight:800;color:var(--blue)}
+    .event-title{font-size:18px;font-weight:700}
+    .event-meta{font-size:14px;color:var(--muted)}
+    .event-link a{padding:8px 12px;border:1px solid rgba(255,255,255,.18);border-radius:10px}
+    .divider{display:flex;align-items:center;gap:10px;margin:12px 0}
+    .divider span{font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+    .divider .line{flex:1;height:1px;background:rgba(255,255,255,.12)}
+    .side-photo{border-radius:18px;overflow:hidden;border:none}
+    #about .split{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    @media (max-width:900px){#about .split{grid-template-columns:1fr}}
+    .about-card{background:rgba(255,255,255,.03);border:none;border-radius:18px;padding:24px;position:relative;height:100%;display:flex;flex-direction:column;justify-content:center}
+    .about-links{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+    .about-links a{display:inline-block;padding:10px 18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;font-weight:600;transition:all .2s}
+    .about-links a:hover{background:rgba(123,104,238,.2);border-color:var(--blue)}
+    #contact .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+    .panel{background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.18);border-radius:18px;padding:24px;position:relative}
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:640px){form .row{grid-template-columns:1fr}}
+    input, textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:var(--white);font-size:15px;outline:none}
+    textarea{min-height:120px;resize:vertical}
+    #contact form label > .muted { position: relative; top: -6px; display:inline-block; }
+    .testimonials{position:relative;min-height:72px;margin-top:12px}
+    .quote{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;font-style:italic;color:var(--muted);opacity:0;transition:opacity .35s ease}
+    .quote.active{display:flex;opacity:1}
+    footer{padding:40px 0;color:var(--muted);border-top:2px solid rgba(255,255,255,.18);text-align:center}
+  </style>
+
+  <style>
+    #hero{ position:relative; }
+    #hero video.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.05) brightness(.8); z-index:0; }
+    #hero video.title-overlay{ position:absolute; width:50%; height:50%; top:18%; left:25%; transform:translateY(-20px); object-fit:contain; z-index:0; pointer-events:none; }
+    #hero .hero-content{ position:relative; z-index:2; }
+    .vignette::after{ z-index:1; }
+  </style>
+
+  <style>
+    #contact form .row:nth-of-type(2) input { margin-top: 10px; }
+    #contact form textarea { margin-top: 10px; }
+  </style>
+
+  <style>
+    #contact form .row:nth-of-type(2) label > .muted,
+    #contact form > label > .muted {
+      top: -3px !important;
+    }
+  </style>
+
+  <style>
+    #contact form .row:nth-of-type(2) label > .muted,
+    #contact form > label > .muted {
+      top: 2px !important;
+    }
+    #about .about-card { background: rgba(255,255,255,.03)!important; border:none; }
+  </style>
+
+  <style>
+    #contact form .row:first-of-type { margin-bottom: 16px; }
+    #contact form .row:nth-of-type(2) { margin-bottom: 16px; }
+  </style>
+
+  <style>
+    #about { background-color: #7B68EE !important; background: #7B68EE !important; }
+  </style>
+
+  <style>
+    /* Remove border only on the Contact section image wrapper */
+    #contact .side-photo{ border:none !important; }
+  </style>
+
+
+  <style>
+    /* Mobile polish — should not affect desktop */
+    @media (max-width: 900px){
+      section{ padding: 56px 0; }
+      .container{ padding: 0 18px; }
+      .nav-inner{ padding: 10px 14px; }
+      nav ul{ gap: 16px; flex-wrap: wrap; justify-content:flex-end; }
+      nav a{ font-size: 14px; }
+      .brand img.logo{ width: 48px; }
+      .socials{ gap: 10px; }
+      .socials img{ width: 20px; height: 20px; }
+
+      /* Hero: reduce empty space and keep CTA reachable */
+      section#hero{ min-height: 78svh; }
+      #hero .hero-content{ padding: 16px; }
+      #hero .hero-content .btn{ margin-top: 140px; }
+
+      /* Title overlay: keep within view on small screens */
+      #hero video.title-overlay{
+        width: 100% !important;
+        height: 56.25% !important;
+        left: 0% !important;
+        top: 16% !important;
+        transform: translateY(-10px) !important;
+      }
+
+      /* About: maintain readable spacing */
+      #about .split{ gap: 18px; }
+      .about-card{ padding: 18px; }
+      .about-links{ justify-content: center; }
+    }
+
+    @media (max-width: 700px){
+      /* Header: prevent cramped nav */
+      nav ul{ gap: 12px; }
+      nav a{ font-size: 13px; }
+      .socials{ display:none; } /* reduce clutter; keeps links in footer */
+    }
+
+    @media (max-width: 900px){
+      /* Contact: stack cleanly */
+      #contact .grid{ grid-template-columns: 1fr !important; }
+      #contact .side-photo{ border:none !important; }
+      #contact .side-photo img{ width:100%; height:auto; display:block; }
+    }
+
+    @media (max-width: 640px){
+      section h2{ margin-bottom: 14px; }
+      .events-list{ padding: 14px; }
+      .event-title{ font-size: 16px; }
+      .event-card{ padding: 12px; }
+      .panel{ padding: 18px; }
+      input, textarea{ font-size: 16px; } /* iOS zoom prevention */
+    }
+
+    @media (max-width: 420px){
+      #hero .hero-content .btn{ margin-top: 110px; }
+      #hero video.title-overlay{ top: 14% !important; }
+    }
+  </style>
+
+
+  <style>
+    /* Hamburger */
+    .hamburger{ display:none; background:transparent; border:0; padding:10px; cursor:pointer; z-index:100; position:relative; }
+    .hamburger span{ display:block; width:26px; height:2px; background:#FFFFFF; border-radius:2px; }
+    .hamburger span + span{ margin-top:6px; }
+
+    .mobile-menu{
+      display:none;
+      position:absolute;
+      top:60px;
+      right:18px;
+      background:rgba(0,0,0,.92);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:14px;
+      padding:10px;
+      min-width:180px;
+      box-shadow:0 12px 40px rgba(0,0,0,.45);
+      z-index:50;
+    }
+    .mobile-menu a{
+      display:block;
+      padding:10px 12px;
+      border-radius:10px;
+      color:#FFFFFF;
+      font-weight:800;
+    }
+    .mobile-menu a:hover{ background:rgba(255,255,255,.08); }
+
+    /* Footer structure */
+    .footer-line{ display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+    .sep{ opacity:.8; }
+    @media (max-width: 700px){
+      .footer-line{ flex-direction:column; gap:12px; }
+      .sep{ display:none; }
+      footer{ padding: 44px 0; }
+    }
+
+    /* Testimonials spacing (avoid overlap) */
+    .testimonials{ min-height: 96px; }
+    .quote{ padding: 18px 18px; line-height:1.45; }
+    @media (max-width: 640px){
+      .testimonials{ min-height: 112px; }
+      .quote{ padding: 20px 18px; }
+    }
+
+    /* Mobile events pagination controls */
+    .events-pager{ display:none; gap:10px; justify-content:space-between; align-items:center; margin-top:12px; }
+    .events-pager .btn-lite{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      color:#FFFFFF;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .events-pager .btn-lite:disabled{ opacity:.45; cursor:not-allowed; }
+    .events-pager .page-label{ color:rgba(255,255,255,.8); font-weight:700; font-size:13px; }
+    @media (max-width: 900px){
+      .events-pager{ display:flex; }
+    }
+
+    /* Mobile nav swap */
+    @media (max-width: 700px){
+      nav ul{ display:none; }
+      .hamburger{ display:none; } /* hamburger disabled on index page */
+      .nav-inner{ position:relative; }
+    }
+  </style>
+
+</head>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <a href="#hero"><img class="logo" src="assets/logo.png" alt="Out of Office logo" /></a>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <a href="#hero">Home</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="socials">
+
+        <a href="https://www.youtube.com/@OutOfOfficeRocks" target="_blank" aria-label="YouTube"><img src="assets/icons/youtube.png" alt="YouTube"></a>
+        <a href="https://www.instagram.com/outofofficerocks" target="_blank" aria-label="Instagram"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><img src="assets/icons/facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </header>
+
+  <section id="hero" class="vignette">
+    <video class="hero-bg" autoplay muted playsinline loop>
+      <source src="assets/hero.mov" type="video/quicktime" />
+    </video>
+    <video id="titleVideo" class="title-overlay" autoplay muted playsinline preload="auto">
+      <source src="assets/WebsiteTitle.mov" type="video/quicktime">
+    </video>
+    <div class="hero-content container" style="padding-top:72px">
+      <a class="btn" href="#contact" id="bookNowBtn">Book Now</a>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="container">
+      <h2>Events</h2>
+      <div class="grid">
+        <div class="events-list">
+          <div class="divider"><span>Upcoming</span><div class="line"></div></div>
+          <div class="events-scroll" id="events-upcoming"></div>
+          <div class="events-pager" id="upcomingPager"></div>
+
+          <div class="divider"><span>Previous</span><div class="line"></div></div>
+          <div class="events-scroll" id="events-previous"></div>
+          <div class="events-pager" id="previousPager"></div>
+        </div>
+        <div class="side-photo">
+          <img src="assets/events-side.png" alt="Out of Office live performance">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="about">
+    <div class="container">
+      <h2>About Out of Office</h2>
+      <div class="split">
         
-        <!-- CSS -->
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <!-- Navigation Menu -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Out Of Office</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <!--<li class="nav-item">
-                            <a class="nav-link" href="#about">About Us</a>
-                        </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">Music</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Booking Agents</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#band-bios">Meet the Band</a>
-                        </li>
-                    </ul>
-                    <!-- <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary ms-auto me-3" target="_blank">Find Us On Instagram</a> -->
-                </div>
+        
+        
+        <div>
+          <a href="https://www.youtube.com/watch?v=M3zm5irtkcQ" target="_blank" style="display:block;position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+            <img src="https://img.youtube.com/vi/M3zm5irtkcQ/maxresdefault.jpg" alt="Out of Office Band Video" style="width:100%;display:block">
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(255,0,0,.8);border-radius:12px;display:flex;align-items:center;justify-content:center">
+              <div style="width:0;height:0;border-left:20px solid white;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px"></div>
             </div>
-        </nav>
-
-        <!-- Header Section -->
-        <header class="text-white text-center py-5">
-            <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center">
-                <!-- Logo Image -->
-                <img src="media/images/rage_logo.png" alt="Out Of Office Logo" 
-                    class="img-fluid mb-3 mb-md-0 me-md-3" style="max-height: 10em;">
-                <!-- Band Name -->
-                <h1 class="display-3">Out Of Office</h1>
-            </div>
-            <p class="lead">Good music. Better gear.</p>
-        </header>
-
-        <!-- Main Content -->
-        <div class="container my-5">
-            <div class="row">
-                
-                <!-- Main Section -->
-                <div class="col-lg-6">
-                    
-                    <!-- About Us Section -->
-                    <section id="about" class="py-5">
-                        <h2 class="section-title">About Us</h2>
-                        <p>Covering the best 80's, 90's, and 00's rock with energy, fun, and excitement.</p>
-                        <p>Bring your flannel and your angst, and jam out with the crew!</p>
-                        
-                        <!-- Video player -->
-                        <div id="video-container" class="video-wrapper">
-                            <iframe id="video-player" 
-                                src="" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                        <br>
-                        <button id="load-new-video" class="btn btn-primary mt-3">See Another Video</button>
-                    </section>
-
-                    <!-- Booking Agents Section -->
-                    <section id="contact" class="py-5">
-                        <h2 class="section-title">Bookers</h2>
-                        <p>Feel free to reach out for bookings or any other inquiries:</p>
-                        <div class="mt-4">
-                            <a href="mailto:outofofficerocks@gmail.com" class="btn btn-primary">Email Us</a>
-                            <!-- <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary me-2" target="_blank">Follow us on Instagram</a> -->
-                        </div>
-                        <div class="mt-4">
-                            <p>We are a high-energy band that taps into the nostalgia of the 90s and beyond; those songs you haven’t heard in years but loved during a different time in your life.</p>
-                            <p>A fully-mixed band that can scale from intimate venues to larger PA-supported stages, we are professionals who apply our corporate tenacity to the fun of making music.</p>
-                        </div>
-                        <div>
-                            <h3 class="section-title">Professional Gear</h3>
-                            <ul>
-                                <li>small-footprint soundboard</li>
-                                <li>appropriately sized PA</li>
-                                <li>no amps or cabinets</li>
-                                <li>musicians wear in-ear monitors</li>
-                                <li>self-contained and efficient for easy set up and tear down</li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-
-                <!-- Sidebar Section -->
-                <div class="col-lg-6">
-
-                    <!-- Upcoming Gigs -->
-                    <section id="gigs" class="py-5">
-                        <h2 class="section-title">Upcoming Gigs</h2>
-                        <p>For the Millenials, the Xers, and the Z-curious</p>
-                        <img src="media/images/band_logo_bw.png" class="img-fluid rounded mb-4" alt="Upcoming Gigs">
-                        <ul class="list-group">
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>Jan 30, 2026: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA
-                            </li>
-                        </ul>
-                        </section>
-                    
-                    <!-- Past Gigs -->
-                    <section id="past-gigs" class="py-5">
-                        <h2 class="section-title">Recent Gigs</h2>
-                        <ul class="list-group">
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>June 6, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA - First Friday!
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>May 23, 2025: </strong><a href="https://britanniaarms.com/weekly-events">Britannia Arms (Almaden)</a>, San Jose, CA
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>May 21, 2025: </strong><a href="https://sanpedrosquaremarket.com/calendar">San Pedro Square</a>, San Jose, CA
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>May 18th, 2025: </strong><a href="https://campbellboogie.com">BoogieFest</a>, Campbell, CA
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>March 28, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>February 1, 2025: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>December 27, 2024: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA   -  ACOUSTIC SET!
-                            </li>
-                            <li class="list-group-item bg-dark text-white">
-                                <strong>August 30, 2024: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA
-                            </li>
-                        </ul>
-                    </section>
-
-                    <!-- Socials Section -->
-                    <!-- <section id="socials" class="py-5">
-                        <h2 class="section-title">Socials</h2>
-                        <p>Follow us:</p>
-                        <div class="mt-4">
-                            <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary me-2" target="_blank">Instagram</a>
-                        </div>
-                    </section> -->
-
-                    <!-- Music Section -->
-                    <!-- <section id="music" class="py-5">
-                        <h2 class="section-title">Music</h2>
-                        <p>Listen to some of our performances!</p>
-                        <audio controls style="margin-bottom: 20px;">
-                            <source src="media/audio/90_second_sizzle.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </section> -->
-                </div>
-            </div>
-            
-            <!-- Band Member Bios Section -->
-            <div class="row">
-                    <section id="band-bios" class="py-5 bg-dark text-white">
-                        <div class="container">
-                            <h2 class="section-title text-center mb-4">Board of Directors</h2>
-                            <div class="row justify-content-center">
-                                
-                                <!-- Band Member - Mark -->
-                                <div class="band-bio">
-                                    <img src="media/images/mark.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
-                                    <h4>Mark E</h4>
-                                    <p>Vocals, Acoustic, Keys</p>
-                                    <p>Legend has it, Mark once hit a high note so pure that a stray cat wandered in and harmonized. The cat became a local legend, while Mark’s only claim to fame is a voicemail from the cat’s agent.</p>
-                                </div>
-                                
-                                <!-- Band Member - Bill -->
-                                <div class="band-bio">
-                                    <img src="media/images/bill.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
-                                    <h4>Bill D</h4>
-                                    <p>Bass, Vocals</p>
-                                    <p>Bill has yet to provide a bio. He's a bass player, we dont expect much.</p>
-                                </div>
-                                
-                                <!-- Band Member - Shane -->
-                                <div class="band-bio">
-                                    <img src="media/images/shane.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
-                                    <h4>Shane B</h4>
-                                    <p>Guitar</p>
-                                    <p>Shane once got kicked out of a Toronto club for playing a solo so long that the bartender unplugged his amp. Rumor has it he sold his soul for the perfect distortion pedal, but the only thing he got in return was tinnitus.</p>
-                                </div>
-                                
-                                <!-- Band Member - Greg -->
-                                <div class="band-bio">
-                                    <img src="media/images/greg.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
-                                    <h4>Greg M</h4>
-                                    <p>Drums</p>
-                                    <p>Greg once hit the snare so hard that a seismograph in San Francisco briefly registered it as a minor earthquake. Geologists later confirmed he was “warming up.”</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </section>
-            </div>
-
-            <!-- Former Band Member Bios Section -->
-            <div class="row">
-                    <section id="former-band-bios" class="py-5 bg-dark text-white">
-                        <div class="container">
-                            <h2 class="section-title text-center mb-4">Directors Emeritus</h2>
-                            <div class="row justify-content-center">
-                                
-                                <!-- Band Member - Jeff -->
-                                <div class="band-bio">
-                                    <img src="media/images/jeff.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
-                                    <h4>Jeff R</h4>
-                                    <p>Bass</p>
-                                    <p>Jeff once locked in with the drummer so perfectly that time itself slowed down. Turns out, it was just the effects of mild dehydration. As he's almost a doctor, he diagnosed himself immediately. <br><br>Jeff has taken a sabbatical on New Parent Leave. We're pretty sure there's a baby?</p>
-                                </div>
-                                
-                                <!-- Band Member - Mike -->
-                                <div class="band-bio">
-                                    <img src="media/images/mike.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
-                                    <h4>Mike A</h4>
-                                    <p>Drums, Vocals</p>
-                                    <p>Mike allegedly played a drum solo so intense that Dave Grohl himself nodded in approval… from a completely unrelated interview on TV. Mike insists the timing was not a coincidence. <br><br>Mike has fled the country, allegedly to "get away from the corporate grind" and "spend more time with his family"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-            </div>
+          </a>
         </div>
 
-        <!-- Footer -->
-        <footer class="footer py-3">
-            <div class="container text-center">
-                <span>&copy; 2025 Out Of Office. All Rights Reserved.</span>
+<div class="about-card">
+          <p>We're an 80s, 90s, and 00s rock cover band that's all about getting people dancing and singing along. If it's popular, we'll play it—and we'll play it loud.</p>
+          <p>Out of Office brings corporate precision, massive energy, and unapologetic fun to every show. We're a fully mixed, scalable band, equally at home in intimate venues or large PA-driven stages—and we show up ready, reliable, and self-contained.</p>
+          <div class="about-links" style="justify-content:center;align-items:center;">
+            <a href="Current-Build-Meet.html" style="color:#FFFFFF;">Meet the Band</a>
+            <a href="assets/EPK.pdf" target="_blank" style="color:#FFFFFF;">Download EPK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="grid">
+        <div class="panel">
+          <form id="contactForm" action="https://formspree.io/f/xpqjqpwg" method="POST">
+            <div class="row">
+              <label><span class="muted">Name</span><input type="text" name="name" required /></label>
+              <label><span class="muted">Email</span><input type="email" name="email" required /></label>
             </div>
-        </footer>
+            <label><span class="muted">Message</span><textarea name="message" required></textarea></label>
+            <button type="submit" class="btn" style="margin-top:12px;cursor:pointer;border:none">Send</button>
+          </form>
 
-        <!-- Scripts -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script>
+          <!--<div class="testimonials" id="testimonials">
+            <div class="quote">"Absolutely awesome! They brought the energy and kept everyone on the dance floor all night. Highly recommend for any event!" — Sarah M.</div>
+            <div class="quote">"Best cover band we've hired. Professional, fun, and played all the hits. Our guests are still talking about it!" — Tom L.</div>
+            <div class="quote">"Out of Office turned our corporate event into an unforgettable party. Can't wait to book them again!" — Emily R.</div>
+          </div>-->
+        </div>
+        <div class="side-photo">
+          <img src="assets/contact-side.png" alt="Out of Office band photo">
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // Load a random video
-            document.addEventListener("DOMContentLoaded", function () {
-                let videoList = [];
-                let currentIndex = 0;
+  
+  
+  <footer>
+    <div class="container footer-line">
+      <span class="footer-item">© 2026 Out of Office</span>
+      <span class="sep">·</span>
+      <span class="footer-item"><a href="mailto:OutOfOfficeRocks@gmail.com" style="color:#FFFFFF">OutOfOfficeRocks@gmail.com</a></span>
+      <span class="sep">·</span>
+      <span class="footer-item" style="color:#FFFFFF">@OutOfOfficeRocks</span>
+    </div>
+  </footer>
 
-                // Function to shuffle an array (Fisher-Yates algorithm)
-                function shuffleArray(array) {
-                    for (let i = array.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * (i + 1));
-                        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-                    }
-                }
 
-                // Function to update video player
-                function updateVideo() {
-                    if (videoList.length === 0) { // Prevent errors if no videos are available
-                        console.warn("No videos available! Check json or links");
-                        const videoFrame = document.getElementById("video-player");
-                        videoFrame.src = ""; // Clear the iframe
-                        return;
-                    }
+  <script type="application/json" id="events-json">
+  [
+    { "dateISO": "2026-01-30", "dateLabel": "Jan 30, 2026", "title": "Le Banc", "city": "Los Altos, CA" },
+    { "dateISO": "2025-06-06", "dateLabel": "Jun 6, 2025", "title": "Le Banc", "note": "First Friday!", "city": "Los Altos, CA" },
+    { "dateISO": "2025-05-23", "dateLabel": "May 23, 2025", "title": "Britannia Arms (Almaden)", "city": "San Jose, CA" },
+    { "dateISO": "2025-05-21", "dateLabel": "May 21, 2025", "title": "San Pedro Square", "city": "San Jose, CA" },
+    { "dateISO": "2025-05-18", "dateLabel": "May 18, 2025", "title": "BoogieFest", "city": "Campbell, CA" },
+    { "dateISO": "2025-03-28", "dateLabel": "Mar 28, 2025", "title": "Le Banc", "city": "Los Altos, CA" },
+    { "dateISO": "2025-02-01", "dateLabel": "Feb 1, 2025", "title": "Quarter Note Bar and Grill", "city": "Sunnyvale, CA" },
+    { "dateISO": "2024-12-27", "dateLabel": "Dec 27, 2024", "title": "Quarter Note Bar and Grill", "note": "ACOUSTIC SET!", "city": "Sunnyvale, CA" },
+    { "dateISO": "2024-08-30", "dateLabel": "Aug 30, 2024", "title": "Quarter Note Bar and Grill", "city": "Sunnyvale, CA" }
+  ]
+  </script>
 
-                    const videoFrame = document.getElementById("video-player");
-                    videoFrame.src = `https://www.youtube.com/embed/${videoList[currentIndex].id}`;
+  <script>
+    (function(){
+      function renderEvents(){
+        var upEl = document.getElementById('events-upcoming');
+        var pastEl = document.getElementById('events-previous');
+        var node = document.getElementById('events-json');
+        if(!upEl || !pastEl || !node) return;
 
-                    // Move to the next video
-                    currentIndex++;
+        var data = [];
+        try { data = JSON.parse(node.textContent || '[]'); } catch(e){ data = []; }
 
-                    // If we've gone through all videos, reshuffle and restart
-                    if (currentIndex >= videoList.length) {
-                        shuffleArray(videoList);
-                        currentIndex = 0;
-                    }
-                }
+        var today = new Date(new Date().toDateString());
+        data.forEach(function(e){
+          e.dateISO = e.dateISO || e.date;
+          e.dateLabel = e.dateLabel || e.dateISO;
+        });
+        var upcoming = data.filter(function(e){ return !e.past && new Date(e.dateISO) >= today; })
+                           .sort(function(a,b){ return new Date(a.dateISO) - new Date(b.dateISO); });
+        var previous = data.filter(function(e){ return e.past || new Date(e.dateISO) < today; })
+                           .sort(function(a,b){ return new Date(b.dateISO) - new Date(a.dateISO); });
 
-                // Fetch video list from JSON
-                fetch('videos.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        videoList = data.videos.filter(video => video.enabled); // Only use enabled videos
-                        shuffleArray(videoList); // Shuffle initially
-                        updateVideo(); // Load the first random video
-                    })
-                    .catch(error => console.error("Error loading video list:", error));
+        function card(e){
+          var el = document.createElement('div');
+          el.className = 'event-card';
+          el.innerHTML = ''
+            + '<div class="event-date">'+e.dateLabel+'</div>'
+            + '<div>'
+              + '<div class="event-title">'+e.title+(e.note?(' — '+e.note):'')+'</div>'
+              + '<div class="event-meta">'+(e.venue||'')+(e.city?((e.venue?' · ':'')+e.city):'')+'</div>'
+            + '</div>'
+            + '<div class="event-link">'
+              + (e.link ? '<a href="'+e.link+'" target="_blank" rel="noopener">Details</a>' : '')
+            + '</div>';
+          return el;
+        }
 
-                // Add event listener to button
-                document.getElementById("load-new-video").addEventListener("click", updateVideo);
-            });
-        </script>
-    </body>
+        upEl.innerHTML = '';
+        pastEl.innerHTML = '';
+        if (upcoming.length === 0) {
+          var empty = document.createElement('div');
+          empty.className = 'event-card';
+          empty.innerHTML = '<div class="event-date">—</div>'
+            + '<div class="event-title" style="grid-column: span 2;">Recuperating our strength til the next team-building event</div>';
+          upEl.appendChild(empty);
+        } else {
+          upcoming.forEach(function(e){ upEl.appendChild(card(e)); });
+        }
+        previous.forEach(function(e){ pastEl.appendChild(card(e)); });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderEvents);
+      else renderEvents();
+    })();
+  </script>
+
+  <script>
+    // WebsiteTitle.mov overlay timing: play once then pause at 2 seconds, reveal CTA at 2s
+    (function(){
+      const v = document.getElementById('titleVideo');
+      const btn = document.getElementById('bookNowBtn');
+      if(!v || !btn) return;
+      const PAUSE_AT = 2;
+
+      function reveal(){
+        if (btn.style.opacity !== '1') btn.style.opacity = '1';
+      }
+      
+      function onTimeUpdate(){
+        if (v.currentTime >= PAUSE_AT){
+          v.pause();
+          reveal();
+          v.removeEventListener('timeupdate', onTimeUpdate);
+          clearInterval(poller);
+        }
+      }
+
+      const poller = setInterval(() => {
+        if (v.currentTime >= PAUSE_AT){
+          v.pause();
+          reveal();
+          clearInterval(poller);
+          v.removeEventListener('timeupdate', onTimeUpdate);
+        }
+      }, 100);
+
+      const hardFallback = setTimeout(reveal, 3000);
+
+      function start(){
+        // Delay title animation so hero.mp4 has time to render
+        setTimeout(() => {
+          try { v.play().catch(()=>{}); } catch(e){}
+          v.addEventListener('timeupdate', onTimeUpdate);
+        }, 500);
+      }
+
+      if (v.readyState >= 1) start();
+      else v.addEventListener('loadedmetadata', start, { once: true });
+
+      window.addEventListener('beforeunload', () => { clearInterval(poller); clearTimeout(hardFallback); });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      function syncEventsHeight(){
+        var section = document.querySelector('#events');
+        if(!section) return;
+        var list = section.querySelector('.events-list');
+        var img = section.querySelector('.side-photo img');
+        if(!list || !img) return;
+
+        var twoCol = window.matchMedia('(min-width: 901px)').matches;
+        if (twoCol){
+          var h = img.getBoundingClientRect().height;
+          list.style.height = h && h > 0 ? Math.round(h) + 'px' : '';
+        } else {
+          list.style.height = '';
+        }
+      }
+      window.addEventListener('load', syncEventsHeight);
+      window.addEventListener('resize', function(){ requestAnimationFrame(syncEventsHeight); });
+      var evtImg = document.querySelector('#events .side-photo img');
+      if (evtImg){
+        if (evtImg.complete) { syncEventsHeight(); }
+        else { evtImg.addEventListener('load', syncEventsHeight, { once: true }); }
+      }
+    })();
+  </script>
+
+  <script>
+    (function(){
+      function start(){
+        var box = document.getElementById('testimonials');
+        if(!box) return;
+        var quotes = Array.prototype.slice.call(box.querySelectorAll('.quote'));
+        if(!quotes.length) return;
+
+        quotes.forEach(function(q, idx){
+          var isActive = idx === 0;
+          q.classList.toggle('active', isActive);
+          q.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+
+        if (quotes.length === 1) return;
+
+        var i = 0;
+        setInterval(function(){
+          quotes[i].classList.remove('active');
+          quotes[i].setAttribute('aria-hidden', 'true');
+          i = (i+1)%quotes.length;
+          quotes[i].classList.add('active');
+          quotes[i].setAttribute('aria-hidden', 'false');
+        }, 5000);
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+      else start();
+    })();
+  </script>
+
+
+  <script>
+    (function(){
+      function isMobile(){ return window.matchMedia && window.matchMedia('(max-width: 900px)').matches; }
+
+      function paginate(containerId, pagerId, pageSize){
+        var container = document.getElementById(containerId);
+        var pager = document.getElementById(pagerId);
+        if(!container || !pager) return;
+
+        var cards = Array.prototype.slice.call(container.children || []).filter(function(n){
+          return n && n.classList && n.classList.contains('event-card');
+        });
+
+        // If it's the "empty" single card, no pagination needed
+        if (cards.length <= pageSize) {
+          pager.innerHTML = '';
+          return;
+        }
+
+        var page = 0;
+        var pages = Math.ceil(cards.length / pageSize);
+
+        function render(){
+          cards.forEach(function(c, idx){
+            var start = page * pageSize;
+            var end = start + pageSize;
+            c.style.display = (idx >= start && idx < end) ? '' : 'none';
+          });
+
+          pager.innerHTML = '';
+          var prev = document.createElement('button');
+          prev.className = 'btn-lite';
+          prev.textContent = 'Prev';
+          prev.disabled = page === 0;
+
+          var next = document.createElement('button');
+          next.className = 'btn-lite';
+          next.textContent = 'Next';
+          next.disabled = page >= pages - 1;
+
+          var label = document.createElement('div');
+          label.className = 'page-label';
+          label.textContent = 'Showing ' + (page*pageSize + 1) + '–' + Math.min((page+1)*pageSize, cards.length) + ' of ' + cards.length;
+
+          prev.addEventListener('click', function(){ if(page>0){ page--; render(); } });
+          next.addEventListener('click', function(){ if(page<pages-1){ page++; render(); } });
+
+          pager.appendChild(prev);
+          pager.appendChild(label);
+          pager.appendChild(next);
+        }
+
+        render();
+      }
+
+      function apply(){
+        if(!isMobile()) {
+          // reset visibility on desktop
+          ['events-upcoming','events-previous'].forEach(function(id){
+            var c = document.getElementById(id);
+            if(!c) return;
+            Array.prototype.slice.call(c.children || []).forEach(function(n){ n.style.display=''; });
+          });
+          ['upcomingPager','previousPager'].forEach(function(id){
+            var p = document.getElementById(id);
+            if(p) p.innerHTML = '';
+          });
+          return;
+        }
+        paginate('events-upcoming', 'upcomingPager', 4);
+        paginate('events-previous', 'previousPager', 4);
+      }
+
+      window.addEventListener('load', apply);
+      window.addEventListener('resize', function(){ requestAnimationFrame(apply); });
+      document.addEventListener('DOMContentLoaded', apply);
+    })();
+  </script>
+
+
+
+  <script>
+  <script>
+    (function(){
+      var btn = document.querySelector('.hamburger');
+      var menu = document.getElementById('mobileMenu');
+      if(!btn || !menu) return;
+
+      function close(){
+        menu.style.display = 'none';
+        menu.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function open(){
+        menu.style.display = 'block';
+        menu.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if(isOpen) close(); else open();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target) && e.target !== btn) close();
+      });
+      Array.prototype.slice.call(menu.querySelectorAll('a')).forEach(function(a){
+        a.addEventListener('click', close);
+      });
+      window.addEventListener('resize', function(){
+        if (window.matchMedia && window.matchMedia('(min-width: 701px)').matches) close();
+      });
+    })();
+  </script>
+
+</body>
 </html>

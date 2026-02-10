@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Out of Office — Meet the Band</title>
+  <meta name="description" content="Meet the Board of Directors of Out of Office.">
+  <style>
+    :root{ --white:#FFFFFF; --blue:#7B68EE; --black:#000000; --btn:#7B68EE; --btn-text:#FFFFFF; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--black);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--blue);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:#000000;backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.08);z-index:20}
+    @media (max-width: 900px){
+      header{position:relative}
+    }
+    header .row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+    header .brand{display:flex;align-items:center;gap:12px}
+    header .brand img{width:55px;height:auto;border-radius:8px}
+    header nav a{color:var(--white);font-weight:800}
+    .btn{display:inline-block;background:var(--btn);color:var(--white);padding:10px 16px;border-radius:999px;font-weight:700;letter-spacing:.4px;border:1px solid rgba(255,255,255,.12)}
+    .btn:hover{transform:translateY(-1px)}
+    h1{font-size:clamp(28px,4vw,48px);margin:16px 0}
+    h2{font-size:clamp(22px,3vw,32px);margin:24px 0 12px}
+    section{padding:40px 0;border-top:1px solid rgba(255,255,255,.12)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;padding:20px}
+    .avatar{width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);margin-bottom:16px}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    .info{display:flex;flex-direction:column;gap:8px}
+    .name{font-weight:800;font-size:24px}
+    .roles{color:var(--blue);font-weight:700;font-size:16px}
+    .bio{color:var(--white);opacity:.9;line-height:1.45;font-size:15px}
+    footer{padding:40px 0;color:var(--white);opacity:.7;border-top:2px solid rgba(255,255,255,.25);text-align:center;margin-top:40px}
+    .board-head{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
+    .board-head .dot{width:10px;height:10px;border-radius:50%;background:var(--blue)}
+  </style>
+
+  <style>
+    /* Mobile polish — should not affect desktop */
+    @media (max-width: 900px){
+      .container{ padding: 18px; }
+      header .row{ padding: 10px 12px; }
+    }
+
+    @media (max-width: 640px){
+      header .row{ flex-wrap: wrap; gap: 10px; }
+      header .brand img{ width: 48px; }
+      .btn{ padding: 10px 14px; }
+      .grid{ gap: 18px; }
+      .card{ padding: 16px; }
+      .name{ font-size: 22px; }
+      .bio{ font-size: 15px; }
+    }
+
+    @media (max-width: 420px){
+      header .row{ flex-direction: column; align-items:flex-start; }
+      header .row > div:last-child{ width: 100%; }
+      header .row > div:last-child .btn{ width: 100%; text-align:center; }
+    }
+  </style>
+
+
+  <style>
+    /* Hamburger (Meet page) */
+    .hamburger{ display:none; background:transparent; border:0; padding:10px; cursor:pointer; z-index:100; position:relative; }
+    .hamburger span{ display:block; width:26px; height:2px; background:#FFFFFF; border-radius:2px; }
+    .hamburger span + span{ margin-top:6px; }
+
+    .mobile-menu{
+      display:none;
+      position:absolute;
+      top:58px;
+      right:18px;
+      background:rgba(0,0,0,.92);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:14px;
+      padding:10px;
+      min-width:200px;
+      box-shadow:0 12px 40px rgba(0,0,0,.45);
+      z-index:50;
+    }
+    .mobile-menu a{
+      display:block;
+      padding:10px 12px;
+      border-radius:10px;
+      color:#FFFFFF;
+      font-weight:800;
+    }
+    .mobile-menu a:hover{ background:rgba(255,255,255,.08); }
+
+    /* Footer structure */
+    .footer-line{ display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+    .sep{ opacity:.8; }
+    @media (max-width: 700px){
+      .footer-line{ flex-direction:column; gap:12px; }
+      .sep{ display:none; }
+      footer{ padding: 44px 0; }
+    }
+
+    @media (max-width: 700px){
+      header nav{ display:none; }
+      .hamburger{ display:inline-block; }
+    }
+  </style>
+
+
+  <style>
+    /* Meet page mobile header layout fix */
+    @media (max-width: 700px){
+      header .row{
+        display:grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        align-items:center;
+        gap:12px;
+        position:relative;
+      }
+      header .brand{
+        grid-column:1 / 2;
+        grid-row:1 / 2;
+      }
+      .meet-hamburger{
+        grid-column:2 / 3;
+        grid-row:1 / 2;
+        justify-self:end;
+      }
+      header .row > div:last-child{
+        grid-column:1 / 3;
+        grid-row:2 / 3;
+      }
+      header .row > div:last-child .btn{
+        width:100%;
+        text-align:center;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <header>
+    <div class="row container">
+      <div class="brand">
+        <a href="index.html#hero"><img src="assets/logo.png" alt="Out of Office logo" /></a>
+      </div>
+      
+      <button class="hamburger meet-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="meetMobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <div id="meetMobileMenu" class="mobile-menu meet-mobile-menu" aria-hidden="true">
+        <a href="index.html#hero">Home</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+
+        <a class="btn" href="index.html#contact">Book Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="board">
+      <div class="board-head"><span class="dot"></span><h2 style="margin:0">Board of Directors</h2></div>
+      <div class="grid">
+        <!-- Mark E -->
+        <article class="card">
+          <div class="avatar"><img src="assets/mark.png" alt="Mark E"></div>
+          <div class="info">
+            <div class="name">Mark E</div>
+            <div class="roles">Vocals, Acoustic, Keys</div>
+            <p class="bio">Legend has it, Mark once hit a high note so pure that a stray cat wandered in and harmonized — the cat became a local legend, while Mark's only claim to fame is a voicemail from the cat's agent.</p>
+          </div>
+        </article>
+        <!-- Bill D -->
+        <article class="card">
+          <div class="avatar"><img src="assets/bill.png" alt="Bill D"></div>
+          <div class="info">
+            <div class="name">Bill D</div>
+            <div class="roles">Bass, Vocals</div>
+            <p class="bio">Bill once played so deep in the pocket, unpaid interns at NASA registered it as a gravity well.</p>
+          </div>
+        </article>
+        <!-- Shane B -->
+        <article class="card">
+          <div class="avatar"><img src="assets/shane.png" alt="Shane B"></div>
+          <div class="info">
+            <div class="name">Shane B</div>
+            <div class="roles">Guitar</div>
+            <p class="bio">Shane once got kicked out of a Toronto club for playing a solo so long that the bartender unplugged his amp — rumor has it he sold his soul for the perfect distortion pedal, but the only thing he got in return was tinnitus.</p>
+          </div>
+        </article>
+        <!-- Greg M -->
+        <article class="card">
+          <div class="avatar"><img src="assets/greg.png" alt="Greg M"></div>
+          <div class="info">
+            <div class="name">Greg M</div>
+            <div class="roles">Drums</div>
+            <p class="bio">Greg once hit the snare so hard that a seismograph in San Francisco briefly registered it as a minor earthquake — geologists later confirmed he was "warming up."</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  
+  
+  <footer>
+    <div class="container footer-line">
+      <span class="footer-item">© 2026 Out of Office</span>
+      <span class="sep">·</span>
+      <span class="footer-item"><a href="mailto:OutOfOfficeRocks@gmail.com" style="color:#FFFFFF">OutOfOfficeRocks@gmail.com</a></span>
+      <span class="sep">·</span>
+      <span class="footer-item" style="color:#FFFFFF">@OutOfOfficeRocks</span>
+    </div>
+  </footer>
+
+
+
+  <script>
+    (function(){
+      var btn = document.querySelector('.meet-hamburger');
+      var menu = document.getElementById('meetMobileMenu');
+      if(!btn || !menu) return;
+
+      function close(){
+        menu.style.display = 'none';
+        menu.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function open(){
+        menu.style.display = 'block';
+        menu.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if(isOpen) close(); else open();
+      });
+      document.addEventListener('click', function(e){
+        if (!menu.contains(e.target) && e.target !== btn) close();
+      });
+      Array.prototype.slice.call(menu.querySelectorAll('a')).forEach(function(a){
+        a.addEventListener('click', close);
+      });
+      window.addEventListener('resize', function(){
+        if (window.matchMedia && window.matchMedia('(min-width: 701px)').matches) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

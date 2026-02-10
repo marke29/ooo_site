@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Out Of Office</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Navigation Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Out Of Office</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="#about">About Us</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Music</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Booking Agents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#band-bios">Meet the Band</a>
+                        </li>
+                    </ul>
+                    <!-- <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary ms-auto me-3" target="_blank">Find Us On Instagram</a> -->
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header Section -->
+        <header class="text-white text-center py-5">
+            <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <!-- Logo Image -->
+                <img src="media/images/rage_logo.png" alt="Out Of Office Logo" 
+                    class="img-fluid mb-3 mb-md-0 me-md-3" style="max-height: 10em;">
+                <!-- Band Name -->
+                <h1 class="display-3">Out Of Office</h1>
+            </div>
+            <p class="lead">Good music. Better gear.</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container my-5">
+            <div class="row">
+                
+                <!-- Main Section -->
+                <div class="col-lg-6">
+                    
+                    <!-- About Us Section -->
+                    <section id="about" class="py-5">
+                        <h2 class="section-title">About Us</h2>
+                        <p>Covering the best 80's, 90's, and 00's rock with energy, fun, and excitement.</p>
+                        <p>Bring your flannel and your angst, and jam out with the crew!</p>
+                        
+                        <!-- Video player -->
+                        <div id="video-container" class="video-wrapper">
+                            <iframe id="video-player" 
+                                src="" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <br>
+                        <button id="load-new-video" class="btn btn-primary mt-3">See Another Video</button>
+                    </section>
+
+                    <!-- Booking Agents Section -->
+                    <section id="contact" class="py-5">
+                        <h2 class="section-title">Bookers</h2>
+                        <p>Feel free to reach out for bookings or any other inquiries:</p>
+                        <div class="mt-4">
+                            <a href="mailto:outofofficerocks@gmail.com" class="btn btn-primary">Email Us</a>
+                            <!-- <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary me-2" target="_blank">Follow us on Instagram</a> -->
+                        </div>
+                        <div class="mt-4">
+                            <p>We are a high-energy band that taps into the nostalgia of the 90s and beyond; those songs you haven’t heard in years but loved during a different time in your life.</p>
+                            <p>A fully-mixed band that can scale from intimate venues to larger PA-supported stages, we are professionals who apply our corporate tenacity to the fun of making music.</p>
+                        </div>
+                        <div>
+                            <h3 class="section-title">Professional Gear</h3>
+                            <ul>
+                                <li>small-footprint soundboard</li>
+                                <li>appropriately sized PA</li>
+                                <li>no amps or cabinets</li>
+                                <li>musicians wear in-ear monitors</li>
+                                <li>self-contained and efficient for easy set up and tear down</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar Section -->
+                <div class="col-lg-6">
+
+                    <!-- Upcoming Gigs -->
+                    <section id="gigs" class="py-5">
+                        <h2 class="section-title">Upcoming Gigs</h2>
+                        <p>For the Millenials, the Xers, and the Z-curious</p>
+                        <img src="media/images/band_logo_bw.png" class="img-fluid rounded mb-4" alt="Upcoming Gigs">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>Jan 30, 2026: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA
+                            </li>
+                        </ul>
+                        </section>
+                    
+                    <!-- Past Gigs -->
+                    <section id="past-gigs" class="py-5">
+                        <h2 class="section-title">Recent Gigs</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>June 6, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA - First Friday!
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>May 23, 2025: </strong><a href="https://britanniaarms.com/weekly-events">Britannia Arms (Almaden)</a>, San Jose, CA
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>May 21, 2025: </strong><a href="https://sanpedrosquaremarket.com/calendar">San Pedro Square</a>, San Jose, CA
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>May 18th, 2025: </strong><a href="https://campbellboogie.com">BoogieFest</a>, Campbell, CA
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>March 28, 2025: </strong><a href="https://www.instagram.com/lebanc_losaltos/">Le Banc</a>, Los Altos, CA
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>February 1, 2025: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>December 27, 2024: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA   -  ACOUSTIC SET!
+                            </li>
+                            <li class="list-group-item bg-dark text-white">
+                                <strong>August 30, 2024: </strong><a href="https://quarternote.com">Quarter Note Bar and Grill</a>, Sunnyvale, CA
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Socials Section -->
+                    <!-- <section id="socials" class="py-5">
+                        <h2 class="section-title">Socials</h2>
+                        <p>Follow us:</p>
+                        <div class="mt-4">
+                            <a href="https://www.instagram.com/outofofficerocks/" class="btn btn-primary me-2" target="_blank">Instagram</a>
+                        </div>
+                    </section> -->
+
+                    <!-- Music Section -->
+                    <!-- <section id="music" class="py-5">
+                        <h2 class="section-title">Music</h2>
+                        <p>Listen to some of our performances!</p>
+                        <audio controls style="margin-bottom: 20px;">
+                            <source src="media/audio/90_second_sizzle.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </section> -->
+                </div>
+            </div>
+            
+            <!-- Band Member Bios Section -->
+            <div class="row">
+                    <section id="band-bios" class="py-5 bg-dark text-white">
+                        <div class="container">
+                            <h2 class="section-title text-center mb-4">Board of Directors</h2>
+                            <div class="row justify-content-center">
+                                
+                                <!-- Band Member - Mark -->
+                                <div class="band-bio">
+                                    <img src="media/images/mark.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Mark E</h4>
+                                    <p>Vocals, Acoustic, Keys</p>
+                                    <p>Legend has it, Mark once hit a high note so pure that a stray cat wandered in and harmonized. The cat became a local legend, while Mark’s only claim to fame is a voicemail from the cat’s agent.</p>
+                                </div>
+                                
+                                <!-- Band Member - Bill -->
+                                <div class="band-bio">
+                                    <img src="media/images/bill.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Bill D</h4>
+                                    <p>Bass, Vocals</p>
+                                    <p>Bill has yet to provide a bio. He's a bass player, we dont expect much.</p>
+                                </div>
+                                
+                                <!-- Band Member - Shane -->
+                                <div class="band-bio">
+                                    <img src="media/images/shane.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Shane B</h4>
+                                    <p>Guitar</p>
+                                    <p>Shane once got kicked out of a Toronto club for playing a solo so long that the bartender unplugged his amp. Rumor has it he sold his soul for the perfect distortion pedal, but the only thing he got in return was tinnitus.</p>
+                                </div>
+                                
+                                <!-- Band Member - Greg -->
+                                <div class="band-bio">
+                                    <img src="media/images/greg.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Greg M</h4>
+                                    <p>Drums</p>
+                                    <p>Greg once hit the snare so hard that a seismograph in San Francisco briefly registered it as a minor earthquake. Geologists later confirmed he was “warming up.”</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+            </div>
+
+            <!-- Former Band Member Bios Section -->
+            <div class="row">
+                    <section id="former-band-bios" class="py-5 bg-dark text-white">
+                        <div class="container">
+                            <h2 class="section-title text-center mb-4">Directors Emeritus</h2>
+                            <div class="row justify-content-center">
+                                
+                                <!-- Band Member - Jeff -->
+                                <div class="band-bio">
+                                    <img src="media/images/jeff.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Jeff R</h4>
+                                    <p>Bass</p>
+                                    <p>Jeff once locked in with the drummer so perfectly that time itself slowed down. Turns out, it was just the effects of mild dehydration. As he's almost a doctor, he diagnosed himself immediately. <br><br>Jeff has taken a sabbatical on New Parent Leave. We're pretty sure there's a baby?</p>
+                                </div>
+                                
+                                <!-- Band Member - Mike -->
+                                <div class="band-bio">
+                                    <img src="media/images/mike.png" class="band-member-photo" alt="Member Name" style="max-width: 150px;">
+                                    <h4>Mike A</h4>
+                                    <p>Drums, Vocals</p>
+                                    <p>Mike allegedly played a drum solo so intense that Dave Grohl himself nodded in approval… from a completely unrelated interview on TV. Mike insists the timing was not a coincidence. <br><br>Mike has fled the country, allegedly to "get away from the corporate grind" and "spend more time with his family"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer py-3">
+            <div class="container text-center">
+                <span>&copy; 2025 Out Of Office. All Rights Reserved.</span>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+
+            // Load a random video
+            document.addEventListener("DOMContentLoaded", function () {
+                let videoList = [];
+                let currentIndex = 0;
+
+                // Function to shuffle an array (Fisher-Yates algorithm)
+                function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                    }
+                }
+
+                // Function to update video player
+                function updateVideo() {
+                    if (videoList.length === 0) { // Prevent errors if no videos are available
+                        console.warn("No videos available! Check json or links");
+                        const videoFrame = document.getElementById("video-player");
+                        videoFrame.src = ""; // Clear the iframe
+                        return;
+                    }
+
+                    const videoFrame = document.getElementById("video-player");
+                    videoFrame.src = `https://www.youtube.com/embed/${videoList[currentIndex].id}`;
+
+                    // Move to the next video
+                    currentIndex++;
+
+                    // If we've gone through all videos, reshuffle and restart
+                    if (currentIndex >= videoList.length) {
+                        shuffleArray(videoList);
+                        currentIndex = 0;
+                    }
+                }
+
+                // Fetch video list from JSON
+                fetch('videos.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        videoList = data.videos.filter(video => video.enabled); // Only use enabled videos
+                        shuffleArray(videoList); // Shuffle initially
+                        updateVideo(); // Load the first random video
+                    })
+                    .catch(error => console.error("Error loading video list:", error));
+
+                // Add event listener to button
+                document.getElementById("load-new-video").addEventListener("click", updateVideo);
+            });
+        </script>
+    </body>
+</html>
