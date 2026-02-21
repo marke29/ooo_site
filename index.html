@@ -80,15 +80,17 @@
       <h2>About Out of Office</h2>
       <div class="split">
         
-        
-        
-        <div>
-          <a href="https://www.youtube.com/watch?v=M3zm5irtkcQ" target="_blank" style="display:block;position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
-            <img src="https://img.youtube.com/vi/M3zm5irtkcQ/maxresdefault.jpg" alt="Out of Office Band Video" style="width:100%;display:block">
-            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(255,0,0,.8);border-radius:12px;display:flex;align-items:center;justify-content:center">
-              <div style="width:0;height:0;border-left:20px solid white;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px"></div>
-            </div>
-          </a>
+        <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+          <iframe
+            id="about-video"
+            width="100%"
+            style="display:block;aspect-ratio:16/9;"
+            src=""
+            title="Out of Office Band Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
 
 <div class="about-card">
@@ -429,6 +431,21 @@
       window.addEventListener('resize', function(){
         if (window.matchMedia && window.matchMedia('(min-width: 701px)').matches) close();
       });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      var iframe = document.getElementById('about-video');
+      if(!iframe) return;
+      fetch('assets/videos.json')
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          var enabled = (data.videos || []).filter(function(v){ return v.enabled; });
+          if(!enabled.length) return;
+          var video = enabled[Math.floor(Math.random() * enabled.length)];
+          iframe.src = 'https://www.youtube.com/embed/' + video.id;
+        });
     })();
   </script>
 
